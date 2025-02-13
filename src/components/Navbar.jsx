@@ -1,10 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { logoutuser } from '../features/auth/authSlice'
 
 const Navbar = () => {
 
 const {user }= useSelector((state) =>state.auth)
+
+
+const dispatch = useDispatch()
+
+const handlelogout =()=>{
+dispatch(logoutuser())
+
+}
 
   return (
     <nav className='py-2 px-8 bg-blue-700 flex item-center justify-between' >
@@ -22,7 +31,7 @@ const {user }= useSelector((state) =>state.auth)
 :(
 
 
-<button className=' py-1 px-2 bg-red-500 rounded-md mx-2 font-bold text-sm '>Logout</button>
+<button  onClick={handlelogout} className=' py-1 px-2 bg-red-500 rounded-md mx-2 font-bold text-sm '>Logout</button>
 )
 }
 

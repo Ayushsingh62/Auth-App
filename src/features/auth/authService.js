@@ -9,8 +9,17 @@ const response = await axios.post('/api/user/register/', formData)
 return response.data
 }
 
+const login = async(formData)=>{
+
+    const response = await axios.post('/api/user/login/', formData)
+     //console.log(response)
+    
+     localStorage.setItem('user', JSON.stringify(response.data))
+    return response.data
+    }
+
 const authService ={
- register
+ register , login
 }
 
 export default authService ;

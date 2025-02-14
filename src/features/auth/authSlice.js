@@ -40,6 +40,27 @@ state.isError=false
                 state.message= action.payload
                 
                     })
+
+                    .addCase (loginUser.pending ,(state , action )=>{
+                        state.isLoading=true
+                        state.isSuccess=false
+                        state.isError=false
+                        
+                            })
+                            .addCase (loginUser.fulfilled ,(state , action )=>{
+                                state.isLoading=false
+                                state.isSuccess=true
+                                state.user= action.payload
+                                state.isError=false
+                                
+                                    })
+                                    .addCase (loginUser.rejected ,(state , action )=>{
+                                        state.isLoading=false
+                                        state.isSuccess=false
+                                        state.isError=true
+                                        state.message= action.payload
+                                        
+                                            })
                     .addCase (logoutuser.fulfilled ,(state , action )=>{
                         state.isLoading=false
                         state.isSuccess=false
@@ -61,6 +82,22 @@ export const  registerUser = createAsyncThunk ("AUTH/REGISTER" ,
 try {
 
     return await authService.register(formData)
+    
+} catch (error) {
+    const message  =error.response.data.message
+    return thunkAPI.rejectWithValue(message)
+}
+    }
+)
+
+// login slice 
+
+
+export const  loginUser = createAsyncThunk ("AUTH/LOGIN" , 
+    async(formData , thunkAPI)=>{
+try {
+
+    return await authService.login(formData)
     
 } catch (error) {
     const message  =error.response.data.message

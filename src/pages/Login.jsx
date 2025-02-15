@@ -42,12 +42,14 @@ password:"",
 
 
   },[user , isError , message])
-if(isLoading){
-  return (<Loading/>)
-}
+
 if (isError && message ){
 
-  return (toast.error("error ocured"))
+   toast.error("error ocured")
+}
+
+if(isLoading){
+  return (<Loading/>)
 }
 
   return (

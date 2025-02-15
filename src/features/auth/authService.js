@@ -6,15 +6,18 @@ const response = await axios.post('/api/user/register/', formData)
  //console.log(response)
 
  localStorage.setItem('user', JSON.stringify(response.data))
+//  console.log(response.data)
 return response.data
 }
 
 const login = async(formData)=>{
 
     const response = await axios.post('/api/user/login/', formData)
-     //console.log(response)
+     
     
      localStorage.setItem('user', JSON.stringify(response.data))
+
+     console.log(response.data)
     return response.data
     }
 

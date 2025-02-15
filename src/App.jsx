@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from "./pages/Home"
 import Login from "./pages/Login"
-import Logout from "./pages/Logout"
+
 import Register from "./pages/Register"
 import { ToastContainer } from 'react-toastify'
 import PrivateComponent from './components/PrivateComponent'
@@ -21,7 +21,7 @@ const App = () => {
  <Navbar/>
 <Routes>
 
-<Route path="/" element={PrivateComponent}>
+<Route path="/" element={<PrivateComponent/>}>
 
 <Route path=''  element={<Home/>}/>
 </Route>
